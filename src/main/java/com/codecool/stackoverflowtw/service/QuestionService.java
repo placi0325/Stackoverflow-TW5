@@ -25,24 +25,23 @@ public class QuestionService {
         List<Question> questions = questionsDAO.listAllQuestions();
         return questions.stream().map(question -> convertQestionIntoQuestionDTO(question)).toList();
         // TODO
-        //return List.of(new QuestionDTO(1, "example title", "example desc", LocalDateTime.now()));
     }
 
     public QuestionDTO getQuestionById(int id) {
         // TODO
-        // call questionsDAO method
-        return new QuestionDTO(id, "example title", "example desc", Timestamp.valueOf(LocalDateTime.now()), 0, 1);
+        Question question = questionsDAO.getById(id);
+        return convertQestionIntoQuestionDTO(question);
     }
 
     public boolean deleteQuestionById(int id) {
         // TODO
-        return false;
+        return questionsDAO.deleteById(id);
     }
 
-    public int addNewQuestion(NewQuestionDTO question) {
+    public int addNewQuestion(QuestionDTO question) {
         // TODO
-        // timestamp, answer_count = 0, user id
-        int createdId = 0;
+        questionsDAO.create(question.title(), question.description(), question.userId());
+        int createdId = question.id();
         return createdId;
     }
 

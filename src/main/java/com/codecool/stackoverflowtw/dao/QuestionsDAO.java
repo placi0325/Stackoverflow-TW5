@@ -6,7 +6,11 @@ import javax.sql.DataSource;
 import java.util.List;
 
 public interface QuestionsDAO {
-    // public void setDataSource (DataSource dataSource);
-    public void create (String title, String description, int userId);
-    public List<Question> listAllQuestions ();
+
+    void create (String title, String description, int userId);
+    List<Question> listAllQuestions ();
+
+    Question getById (int id);
+
+    boolean deleteById(int id);
 }

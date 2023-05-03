@@ -5,14 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
+import java.util.Random;
+
 @Repository
 public class QuestionsDaoJdbc implements QuestionsDAO {
 
-    //private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
 
     private QuestionMapper questionMapper;
@@ -24,20 +24,13 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
     }
 
 
-
-
-    /*public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }*/
-
     @Override
     public void create(String title, String description, int userId) {
-        String query = "INSERT INTO question (title, description, timestamp, answer_count, user_id" +
-                " VALUES(?, ?, ?, ?, ?)";
         Timestamp timestamp = Timestamp.from(Instant.now());
         int ANSWER_COUNT = 0;
-        jdbcTemplate.update(query, title, description, timestamp, ANSWER_COUNT, userId);
+        String query = "INSERT INTO questions (title, description, timestamp, answer_count, user_id)" +
+                " VALUES(?, ?, ?, ?, ?)";
+        jdbcTemplate.update(query, new Object[] {title, description, timestamp, ANSWER_COUNT, userId});
         System.out.println("New question created");
     }
 
@@ -47,4 +40,18 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
         List<Question> questions = jdbcTemplate.query(questionsQuery, questionMapper);
         return questions;
     }
+
+    @Override
+    public Question getById(int id) {
+        String questionQuery = "SELECT * from questions WHERE id =" + id;
+        return jdbcTemplate.query(questionQuery, questionMapper).get(0);
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        String questionQuery = "DELETE FROM questions WHERE id =" + id;
+        return jdbcTemplate.update(questionQuery) == 1;
+    }
+
+
 }

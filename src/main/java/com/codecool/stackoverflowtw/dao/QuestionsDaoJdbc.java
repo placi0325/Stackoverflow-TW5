@@ -14,10 +14,16 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
 
     //private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
+
+    private QuestionMapper questionMapper;
+
     @Autowired
-    public QuestionsDaoJdbc(JdbcTemplate jdbcTemplate) {
+    public QuestionsDaoJdbc(JdbcTemplate jdbcTemplate, QuestionMapper questionMapper) {
         this.jdbcTemplate = jdbcTemplate;
+        this.questionMapper = questionMapper;
     }
+
+
 
 
     /*public void setDataSource(DataSource dataSource) {
@@ -38,7 +44,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
     @Override
     public List<Question> listAllQuestions() {
         String questionsQuery = "SELECT * FROM questions";
-        List<Question> questions = jdbcTemplate.query(questionsQuery, new QuestionMapper());
+        List<Question> questions = jdbcTemplate.query(questionsQuery, questionMapper);
         return questions;
     }
 }

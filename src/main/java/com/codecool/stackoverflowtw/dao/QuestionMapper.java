@@ -2,12 +2,14 @@ package com.codecool.stackoverflowtw.dao;
 
 import com.codecool.stackoverflowtw.dao.model.Question;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 
 import javax.swing.tree.TreePath;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
 public class QuestionMapper implements RowMapper<Question> {
 
     public Question mapRow (ResultSet resultSet, int rowNum) throws SQLException {
@@ -18,6 +20,6 @@ public class QuestionMapper implements RowMapper<Question> {
         question.setTimestamp(resultSet.getTimestamp("timestamp"));
         question.setAnswerCount(resultSet.getInt("answer_count"));
         question.setUserId(resultSet.getInt("user_id"));
-        return new Question();
+        return question;
     }
 }

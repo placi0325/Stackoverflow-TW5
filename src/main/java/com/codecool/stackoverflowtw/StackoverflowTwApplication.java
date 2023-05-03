@@ -27,8 +27,8 @@ public class StackoverflowTwApplication {
         }*/
     }
 
-    @Bean
+    /*@Bean
     public QuestionsDAO questionsDAO() {
         return new QuestionsDaoJdbc();
-    }
+    }*/
 }

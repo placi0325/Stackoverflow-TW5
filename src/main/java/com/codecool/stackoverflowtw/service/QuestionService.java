@@ -26,7 +26,7 @@ public class QuestionService {
 
     public QuestionDTO getQuestionById(int id) {
         // TODO
-        questionsDAO.sayHi();
+        // call questionsDAO method
         return new QuestionDTO(id, "example title", "example desc", LocalDateTime.now());
     }
 
@@ -37,6 +37,7 @@ public class QuestionService {
 
     public int addNewQuestion(NewQuestionDTO question) {
         // TODO
+        // timestamp, answer_count = 0, user id
         int createdId = 0;
         return createdId;
     }

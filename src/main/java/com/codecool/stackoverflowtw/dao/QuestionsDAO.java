@@ -1,5 +1,16 @@
 package com.codecool.stackoverflowtw.dao;
 
+import com.codecool.stackoverflowtw.dao.model.Question;
+
+import javax.sql.DataSource;
+import java.util.List;
+
 public interface QuestionsDAO {
-    void sayHi();
+
+    void create (String title, String description, int userId);
+    List<Question> listAllQuestions ();
+
+    Question getById (int id);
+
+    boolean deleteById(int id);
 }

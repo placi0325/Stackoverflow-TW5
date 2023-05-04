@@ -8,6 +8,12 @@
 <h1>Hello Codecool!</h1>
 <p>
 	<small th:text="'Welcome '+ ${name} +' on our site!'"></small>
+	<div th:each="question:${questions}">
+		<h3 th:text="${question.title()}"></h3>
+		<p th:text="${question.description()}"></p>
+		<p th:text="${question.timestamp()}"></p>
+		<p th:text="${question.answerCount()}"></p>
+	</div>
 </p>
 </body>
 </html>

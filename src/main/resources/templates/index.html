@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Example Title</title>
+    <meta charset="UTF-8">
+    <title>Example Title</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
 <h1>Hello Codecool!</h1>
 <p>
-	<small th:text="'Welcome '+ ${name} +' on our site!'"></small>
-	<div th:each="question:${questions}">
-		<h3 th:text="${question.title()}"></h3>
-		<p th:text="${question.description()}"></p>
-		<p th:text="${question.timestamp()}"></p>
-		<p th:text="${question.answerCount()}"></p>
-	</div>
+    <small th:text="'Welcome '+ ${name} +' on our site!'"></small>
+    <button th:onclick="sortByTitle()" id="sort-by-title">Sort By Title</button>
+    <button th:onclick="sortByTimeStamp()" id="sort-by-timestamp">Sort By Time</button>
+    <button th:onclick="sortByAnswerCount()" id="sort-by-answer-count">Sort By Answer Count</button>
+<div id="questions">
+    <div th:each="question:${questions}">
+        <h3 th:text="${question.title()}"></h3>
+        <p th:text="${question.description()}"></p>
+        <p th:text="${question.timestamp()}"></p>
+        <p th:text="${question.answerCount()}"></p>
+    </div>
+</div>
+<h1>Submit question:</h1>
+
 </p>
 </body>
 </html>

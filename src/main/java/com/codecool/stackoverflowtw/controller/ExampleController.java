@@ -1,13 +1,11 @@
 package com.codecool.stackoverflowtw.controller;
 
+import com.codecool.stackoverflowtw.controller.dto.QuestionDTO;
+import com.codecool.stackoverflowtw.dao.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -21,11 +19,16 @@ public class ExampleController {
     }
 
     @GetMapping
-    public String index(Model model) {
+    public String index(Model model, @RequestParam(required = false) String order_by) {
         model.addAttribute("name", "Example name");
-        model.addAttribute("questions", questionController.getAllQuestions());
+        model.addAttribute("questions", questionController.getAllQuestions(order_by));
         return "index";
     }
+    @PostMapping("/new-question")
+    public String addnewQuestion(@ModelAttribute(value = "newQuestion") QuestionDTO question){
+
+      return "index";
+    };
 
     @GetMapping("/path/{name}")
     public String exampleWithPathVariable(@PathVariable String name, Model model) {

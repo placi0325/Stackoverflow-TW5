@@ -19,8 +19,8 @@ public class QuestionController {
     }
 
     @GetMapping("/all")
-    public List<QuestionDTO> getAllQuestions() {
-        return questionService.getAllQuestions();
+    public List<QuestionDTO> getAllQuestions(@RequestParam String order_by) {
+        return questionService.getAllQuestions(order_by);
     }
 
     @GetMapping("/{id}")

@@ -35,8 +35,8 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
     }
 
     @Override
-    public List<Question> listAllQuestions() {
-        String questionsQuery = "SELECT * FROM questions";
+    public List<Question> listAllQuestions(String parameter) {
+        String questionsQuery = parameter == null ? "SELECT * FROM questions" : "SELECT * FROM questions ORDER BY " + parameter;
         List<Question> questions = jdbcTemplate.query(questionsQuery, questionMapper);
         return questions;
     }

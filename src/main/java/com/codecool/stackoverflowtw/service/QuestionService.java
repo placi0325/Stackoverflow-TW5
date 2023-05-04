@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -21,11 +22,12 @@ public class QuestionService {
         this.questionsDAO = questionsDAO;
     }
 
-    public List<QuestionDTO> getAllQuestions() {
-        List<Question> questions = questionsDAO.listAllQuestions();
+    public List<QuestionDTO> getAllQuestions(String parameter) {
+        List<Question> questions = questionsDAO.listAllQuestions(parameter);
         return questions.stream().map(question -> convertQestionIntoQuestionDTO(question)).toList();
         // TODO
     }
+
 
     public QuestionDTO getQuestionById(int id) {
         // TODO
@@ -38,11 +40,9 @@ public class QuestionService {
         return questionsDAO.deleteById(id);
     }
 
-    public int addNewQuestion(QuestionDTO question) {
+    public void addNewQuestion(NewQuestionDTO question) {
         // TODO
         questionsDAO.create(question.title(), question.description(), question.userId());
-        int createdId = question.id();
-        return createdId;
     }
 
     private QuestionDTO convertQestionIntoQuestionDTO (Question question){

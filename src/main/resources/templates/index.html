@@ -6,7 +6,7 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-<h1>Hello Codecool!</h1>
+<h1>Welcome to Stackoverflow!</h1>
 
 
 <form method="get" id="order-by-title" action="/">
@@ -26,8 +26,8 @@
     <div th:each="question:${questions}">
         <h3 th:text="${question.title()}"></h3>
         <p th:text="${question.description()}"></p>
-        <p th:text="${question.timestamp()}"></p>
-        <p th:text="${question.answerCount()}"></p>
+        <p th:text="${#dates.format(question.timestamp(), 'yyyy-MM-dd hh:mm:ss')}"></p>
+        <p> Answer count: <span th:text=" ${question.answerCount()}"></span></p>
     </div>
 </div>
 <h1>Submit question:</h1>

@@ -27,7 +27,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
     @Override
     public void create(String title, String description, int userId) {
         Timestamp timestamp = Timestamp.from(Instant.now());
-        int ANSWER_COUNT = 0;
+        int ANSWER_COUNT = new Random().nextInt(100);
         String query = "INSERT INTO questions (title, description, timestamp, answer_count, user_id)" +
                 " VALUES(?, ?, ?, ?, ?)";
         jdbcTemplate.update(query, new Object[]{title, description, timestamp, ANSWER_COUNT, userId});

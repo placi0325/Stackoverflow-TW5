@@ -1,21 +1,28 @@
 package com.codecool.stackoverflowtw.controller;
 
+import com.codecool.stackoverflowtw.controller.dto.NewQuestionDTO;
 import com.codecool.stackoverflowtw.controller.dto.QuestionDTO;
 import com.codecool.stackoverflowtw.dao.model.Question;
+import com.codecool.stackoverflowtw.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Controller
 @RequestMapping("/")
 public class ExampleController {
     private final QuestionController questionController;
+    private final QuestionService questionService;
 
     @Autowired
-    public ExampleController(QuestionController questionController) {
+    public ExampleController(QuestionController questionController, QuestionService questionService) {
         this.questionController = questionController;
+        this.questionService = questionService;
     }
 
     @GetMapping
@@ -25,8 +32,10 @@ public class ExampleController {
         return "index";
     }
     @PostMapping("/new-question")
-    public String addnewQuestion(@ModelAttribute(value = "newQuestion") QuestionDTO question){
-
+    public String addNewQuestion(@RequestParam HashMap<String,String> allParams){
+        System.out.println(allParams.entrySet());
+        NewQuestionDTO newQuestionDTO = new NewQuestionDTO(allParams.get("title"), allParams.get("description"), Integer.parseInt(allParams.get("user_id")));
+        questionService.addNewQuestion(newQuestionDTO);
       return "index";
     };
 

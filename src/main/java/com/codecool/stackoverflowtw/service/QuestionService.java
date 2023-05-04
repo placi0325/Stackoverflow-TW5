@@ -40,11 +40,11 @@ public class QuestionService {
         return questionsDAO.deleteById(id);
     }
 
-    public int addNewQuestion(QuestionDTO question) {
+    public void addNewQuestion(NewQuestionDTO question) {
         // TODO
         questionsDAO.create(question.title(), question.description(), question.userId());
-        int createdId = question.id();
-        return createdId;
+        // int createdId = question.id();
+       // return createdId;
     }
 
     private QuestionDTO convertQestionIntoQuestionDTO (Question question){

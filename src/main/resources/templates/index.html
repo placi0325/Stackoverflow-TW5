@@ -21,7 +21,16 @@
     </div>
 </div>
 <h1>Submit question:</h1>
-
+<form method="post" id="form" action="/new-question">
+    <label class='label' for="title">Title:</label><br>
+    <input type="text" id="title" name="title" class="form"><br>
+    <label class='label' for="description">Description:</label><br>
+    <input type="text" id="description" name="description" class="form"><br>
+    <label class='label' for="user_id">User id:</label><br>
+    <input type="text" id="user_id" name="user_id" class="form"><br>
+    <br>
+    <button type="submit">Submit</button>
+</form>
 </p>
 </body>
 </html>

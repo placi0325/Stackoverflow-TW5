@@ -28,11 +28,11 @@ public class QuestionController {
         return questionService.getQuestionById(id);
     }
 
-    @PostMapping("/")
+    /*@PostMapping("/")
     public int addNewQuestion(@RequestBody QuestionDTO question) {
         return questionService.addNewQuestion(question);
 
-    }
+    }*/
 
     @DeleteMapping("/{id}")
     public boolean deleteQuestionById(@PathVariable int id) {

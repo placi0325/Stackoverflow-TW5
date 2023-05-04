@@ -3,34 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Example Title</title>
-    <script src="script.js" defer></script>
+    <link th:href="@{/style.css}" rel="stylesheet">
 </head>
 <body>
 <h1>Welcome to Stackoverflow!</h1>
 
+<br>
 
-<form method="get" id="order-by-title" action="/">
-    <input hidden="hidden" type="text" name="order_by" value="title">
-    <button type="submit">Sort By Title</button>
-</form>
-<form method="get" id="order-by-timestamp" action="/">
-    <input hidden="hidden" type="text" name="order_by" value="timestamp">
-    <button type="submit">Sort By Time</button>
-</form>
-<form method="get" id="order-by-answer-count" action="/">
-    <input hidden="hidden" type="text" name="order_by" value="answer_count">
-    <button type="submit">Sort By Answer Count</button>
-</form>
-
-<div id="questions">
-    <div th:each="question:${questions}">
-        <h3 th:text="${question.title()}"></h3>
-        <p th:text="${question.description()}"></p>
-        <p th:text="${#dates.format(question.timestamp(), 'yyyy-MM-dd hh:mm:ss')}"></p>
-        <p> Answer count: <span th:text=" ${question.answerCount()}"></span></p>
-    </div>
-</div>
-<h1>Submit question:</h1>
+<h2>Submit question:</h2>
 <form method="post" id="new-question" action="/new-question">
     <label class='label' for="title">Title:</label><br>
     <input type="text" id="title" name="title" class="form"><br>
@@ -41,6 +21,32 @@
     <br>
     <button type="submit">Submit</button>
 </form>
+
+<br>
+
+<h2>Questions</h2>
+<br>
+<form method="get" id="order-by-title" action="/" class="form-button">
+    <input hidden="hidden" type="text" name="order_by" value="title">
+    <button type="submit">Sort By Title</button>
+</form>
+<form method="get" id="order-by-timestamp" action="/" class="form-button">
+    <input hidden="hidden" type="text" name="order_by" value="timestamp">
+    <button type="submit">Sort By Time</button>
+</form>
+<form method="get" id="order-by-answer-count" action="/" class="form-button">
+    <input hidden="hidden" type="text" name="order_by" value="answer_count">
+    <button type="submit">Sort By Answer Count</button>
+</form>
+<br>
+<div id="questions">
+    <div th:each="question:${questions}">
+        <h3 th:text="${question.title()}"></h3>
+        <p th:text="${question.description()}"></p>
+        <p th:text="${#dates.format(question.timestamp(), 'yyyy-MM-dd hh:mm:ss')}"></p>
+        <p> Answer count: <span th:text=" ${question.answerCount()}"></span></p>
+    </div>
+</div>
 
 </body>
 </html>

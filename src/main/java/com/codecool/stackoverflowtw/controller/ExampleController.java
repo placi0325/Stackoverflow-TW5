@@ -26,18 +26,21 @@ public class ExampleController {
     }
 
     @GetMapping
-    public String index(Model model, @RequestParam(required = false) String order_by) {
-        model.addAttribute("name", "Example name");
-        model.addAttribute("questions", questionController.getAllQuestions(order_by));
+    public String index(Model model, @RequestParam(required = false) HashMap<String,String> allParams) {
+        model.addAttribute("questions", questionController.getAllQuestions(allParams.get("order_by")));
         return "index";
     }
+
     @PostMapping("/new-question")
     public String addNewQuestion(@RequestParam HashMap<String,String> allParams){
         System.out.println(allParams.entrySet());
-        NewQuestionDTO newQuestionDTO = new NewQuestionDTO(allParams.get("title"), allParams.get("description"), Integer.parseInt(allParams.get("user_id")));
+        NewQuestionDTO newQuestionDTO = new NewQuestionDTO(allParams.get("title"), allParams.get("description"),
+                Integer.parseInt(allParams.get("user_id")));
         questionService.addNewQuestion(newQuestionDTO);
-      return "index";
-    };
+      return "redirect:/";
+    }
+
+
 
     @GetMapping("/path/{name}")
     public String exampleWithPathVariable(@PathVariable String name, Model model) {

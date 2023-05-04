@@ -30,13 +30,14 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
         int ANSWER_COUNT = 0;
         String query = "INSERT INTO questions (title, description, timestamp, answer_count, user_id)" +
                 " VALUES(?, ?, ?, ?, ?)";
-        jdbcTemplate.update(query, new Object[] {title, description, timestamp, ANSWER_COUNT, userId});
+        jdbcTemplate.update(query, new Object[]{title, description, timestamp, ANSWER_COUNT, userId});
         System.out.println("New question created");
     }
 
     @Override
     public List<Question> listAllQuestions(String parameter) {
-        String questionsQuery = parameter == null ? "SELECT * FROM questions" : "SELECT * FROM questions ORDER BY " + parameter;
+        String questionsQuery = parameter == null ?
+                "SELECT * FROM questions" : "SELECT * FROM questions ORDER BY " + parameter;
         List<Question> questions = jdbcTemplate.query(questionsQuery, questionMapper);
         return questions;
     }

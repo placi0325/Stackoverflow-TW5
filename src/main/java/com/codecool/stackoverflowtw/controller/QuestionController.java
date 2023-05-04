@@ -18,6 +18,12 @@ public class QuestionController {
         this.questionService = questionService;
     }
 
+    @GetMapping
+    public String sortQuestions(@RequestParam String order_by) {
+        questionService.getAllQuestions(order_by);
+        return "redirect:/";
+    }
+
     @GetMapping("/all")
     public List<QuestionDTO> getAllQuestions(@RequestParam String order_by) {
         return questionService.getAllQuestions(order_by);

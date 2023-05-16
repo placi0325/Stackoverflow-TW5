@@ -8,8 +8,7 @@ import java.util.List;
 public interface QuestionsDAO {
 
     void create (String title, String description, int userId);
-    List<Question> listAllQuestions ();
-
+    List<Question> listAllQuestions (String parameter);
     Question getById (int id);
 
     boolean deleteById(int id);

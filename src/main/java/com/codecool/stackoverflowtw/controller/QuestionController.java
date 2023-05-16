@@ -18,9 +18,15 @@ public class QuestionController {
         this.questionService = questionService;
     }
 
+    @GetMapping
+    public String sortQuestions(@RequestParam String order_by) {
+        questionService.getAllQuestions(order_by);
+        return "redirect:/";
+    }
+
     @GetMapping("/all")
-    public List<QuestionDTO> getAllQuestions() {
-        return questionService.getAllQuestions();
+    public List<QuestionDTO> getAllQuestions(@RequestParam String order_by) {
+        return questionService.getAllQuestions(order_by);
     }
 
     @GetMapping("/{id}")
@@ -28,11 +34,11 @@ public class QuestionController {
         return questionService.getQuestionById(id);
     }
 
-    @PostMapping("/")
+    /*@PostMapping("/")
     public int addNewQuestion(@RequestBody QuestionDTO question) {
         return questionService.addNewQuestion(question);
 
-    }
+    }*/
 
     @DeleteMapping("/{id}")
     public boolean deleteQuestionById(@PathVariable int id) {

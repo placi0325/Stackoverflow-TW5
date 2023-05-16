@@ -1,31 +1,46 @@
 package com.codecool.stackoverflowtw.controller;
 
+import com.codecool.stackoverflowtw.controller.dto.NewQuestionDTO;
+import com.codecool.stackoverflowtw.controller.dto.QuestionDTO;
+import com.codecool.stackoverflowtw.dao.model.Question;
+import com.codecool.stackoverflowtw.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Controller
 @RequestMapping("/")
 public class ExampleController {
     private final QuestionController questionController;
+    private final QuestionService questionService;
 
     @Autowired
-    public ExampleController(QuestionController questionController) {
+    public ExampleController(QuestionController questionController, QuestionService questionService) {
         this.questionController = questionController;
+        this.questionService = questionService;
     }
 
     @GetMapping
-    public String index(Model model) {
-        model.addAttribute("name", "Example name");
-        model.addAttribute("questions", questionController.getAllQuestions());
+    public String index(Model model, @RequestParam(required = false) HashMap<String,String> allParams) {
+        model.addAttribute("questions", questionController.getAllQuestions(allParams.get("order_by")));
         return "index";
     }
+
+    @PostMapping("/new-question")
+    public String addNewQuestion(@RequestParam HashMap<String,String> allParams){
+        System.out.println(allParams.entrySet());
+        NewQuestionDTO newQuestionDTO = new NewQuestionDTO(allParams.get("title"), allParams.get("description"),
+                Integer.parseInt(allParams.get("user_id")));
+        questionService.addNewQuestion(newQuestionDTO);
+      return "redirect:/";
+    }
+
+
 
     @GetMapping("/path/{name}")
     public String exampleWithPathVariable(@PathVariable String name, Model model) {

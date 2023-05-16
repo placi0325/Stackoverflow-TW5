@@ -16,17 +16,22 @@ public class UserDAOJdbc implements UserDAO{
 
     @Override
     public void createUser(String name, String password) {
-
+        String query = "INSERT INTO users (username, password) VALUES (?, ?);";
+        jdbcTemplate.update(query, name, password);
+        System.out.println("New user created.");
     }
 
     @Override
     public List<User> listAllUsers() {
-        return null;
+        String query = "SELECT * FROM users;";
+        List<User> users = jdbcTemplate.query(query, userMapper);
+        return users;
     }
 
     @Override
     public User getById(int id) {
-        return null;
+        String query = "SELECT * FROM users WHERE id=" + id;
+        return jdbcTemplate.query(query, userMapper).get(0);
     }
 
     @Override

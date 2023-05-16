@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 @Repository
 public class QuestionsDaoJdbc implements QuestionsDAO {
@@ -42,9 +44,9 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
     }
 
     @Override
-    public Question getById(int id) {
+    public Optional<Question> getById(int id) {
         String questionQuery = "SELECT * from questions WHERE id =" + id;
-        return jdbcTemplate.query(questionQuery, questionMapper).get(0);
+        return jdbcTemplate.query(questionQuery, questionMapper).stream().findFirst();
     }
 
     @Override

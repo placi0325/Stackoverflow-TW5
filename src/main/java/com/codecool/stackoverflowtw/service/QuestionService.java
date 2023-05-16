@@ -1,6 +1,6 @@
 package com.codecool.stackoverflowtw.service;
 
-import com.codecool.stackoverflowtw.dao.QuestionsDAO;
+import com.codecool.stackoverflowtw.dao.question.QuestionsDAO;
 import com.codecool.stackoverflowtw.controller.dto.NewQuestionDTO;
 import com.codecool.stackoverflowtw.controller.dto.QuestionDTO;
 import com.codecool.stackoverflowtw.dao.model.Question;
@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuestionService {
@@ -31,8 +32,9 @@ public class QuestionService {
 
     public QuestionDTO getQuestionById(int id) {
         // TODO
-        Question question = questionsDAO.getById(id);
-        return convertQestionIntoQuestionDTO(question);
+        Optional<Question> question = questionsDAO.getById(id);
+        return question.isPresent() ? convertQestionIntoQuestionDTO(question.get()) : null;
+
     }
 
     public boolean deleteQuestionById(int id) {

@@ -2,8 +2,10 @@ package com.codecool.stackoverflowtw.controller;
 
 import com.codecool.stackoverflowtw.controller.dto.NewAnswerDTO;
 import com.codecool.stackoverflowtw.controller.dto.NewQuestionDTO;
+import com.codecool.stackoverflowtw.controller.dto.NewUserDTO;
 import com.codecool.stackoverflowtw.service.AnswerService;
 import com.codecool.stackoverflowtw.service.QuestionService;
+import com.codecool.stackoverflowtw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +20,14 @@ public class IndexController {
     private final QuestionController questionController;
     private final QuestionService questionService;
     private final AnswerService answerService;
+    private final UserService userService;
 
     @Autowired
-    public IndexController(QuestionController questionController, QuestionService questionService, AnswerService answerService) {
+    public IndexController(QuestionController questionController, QuestionService questionService, AnswerService answerService, UserService userService) {
         this.questionController = questionController;
         this.questionService = questionService;
         this.answerService = answerService;
+        this.userService = userService;
     }
 
     @GetMapping
@@ -53,6 +57,14 @@ public class IndexController {
         NewAnswerDTO newAnswerDTO = new NewAnswerDTO(allParams.get("description"),
                 Integer.parseInt(allParams.get("question_id")), Integer.parseInt(allParams.get("user_id")));
         answerService.addNewAnswer(newAnswerDTO);
+        return "redirect:/";
+    }
+
+    @PostMapping("/new-user")
+    public String addNewUser(@RequestParam HashMap<String, String> allParams){
+        System.out.println(allParams.entrySet());
+        NewUserDTO newUserDTO = new NewUserDTO(allParams.get("username"), allParams.get("password"));
+        userService.addNewUser(newUserDTO);
         return "redirect:/";
     }
 

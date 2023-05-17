@@ -31,22 +31,21 @@ public class AnswerDaoJdbc implements AnswerDAO {
     }
 
     @Override
-    public List<Answer> listAllAnswers(String parameter) {
-        String answerQuery = parameter == null ?
-                "SELECT * FROM answers" : "SELECT * FROM answers ORDER BY" + parameter;
-        List<Answer> answers = jdbcTemplate.query(answerQuery, answerMapper);
-        return answers;
+    public List<Answer> listAllAnswersByQuestionId(int questionId) {
+        String answerQuery = "SELECT * FROM answers WHERE question_id = " + questionId;
+        System.out.println(jdbcTemplate.query(answerQuery, answerMapper));
+        return jdbcTemplate.query(answerQuery, answerMapper);
     }
 
     @Override
     public Answer getById(int id) {
-        String answerQuery = "SELECT * FROM answers WHERE id =" + id;
+        String answerQuery = "SELECT * FROM answers WHERE id = " + id;
         return jdbcTemplate.query(answerQuery, answerMapper).get(0);
     }
 
     @Override
     public boolean deleteById(int id) {
-        String answerQuery = "DELETE * FROM answers WHERE id =" + id;
+        String answerQuery = "DELETE * FROM answers WHERE id = " + id;
         return jdbcTemplate.update(answerQuery) == 1;
     }
 }

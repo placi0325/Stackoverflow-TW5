@@ -21,8 +21,8 @@ public class AnswerController {
     }
 
     @GetMapping("/{questionId}")
-    public List<AnswerDTO> getAllAnswers(@PathVariable String questionId) {
-        return answerService.getAllAnswers(questionId);
+    public List<AnswerDTO> getAllAnswers(@PathVariable int questionId) {
+        return answerService.getAllAnswersByQuestionId(questionId);
     }
 
     @PostMapping("/")

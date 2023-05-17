@@ -14,7 +14,7 @@ public class AnswerMapper implements RowMapper<Answer> {
         Answer answer = new Answer();
         answer.setId(rs.getInt("id"));
         answer.setDescription(rs.getString("description"));
-        answer.setTimestamp(rs.getTimestamp("timeStamp"));
+        answer.setTimestamp(rs.getTimestamp("time_stamp"));
         answer.setQuestionId(rs.getInt("question_id"));
         answer.setUserId(rs.getInt("user_id"));
         return answer;

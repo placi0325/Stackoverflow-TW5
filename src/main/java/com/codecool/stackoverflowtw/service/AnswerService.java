@@ -19,8 +19,8 @@ public class AnswerService {
         this.answerDAO = answerDAO;
     }
 
-    public List<AnswerDTO> getAllAnswers(String parameter) {
-        List<Answer> answers = answerDAO.listAllAnswers(parameter);
+    public List<AnswerDTO> getAllAnswersByQuestionId(int questionId) {
+        List<Answer> answers = answerDAO.listAllAnswersByQuestionId(questionId);
 
         return answers.stream().map(this::convertAnswerIntoAnswerDTO).toList();
     }

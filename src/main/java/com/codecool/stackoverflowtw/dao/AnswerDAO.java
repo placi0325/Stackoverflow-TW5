@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface AnswerDAO {
     int create (String description, int questionId, int userId);
-    List<Answer> listAllAnswers (String parameter);
+    List<Answer> listAllAnswersByQuestionId (int questionId);
+
     Answer getById (int id);
 
     boolean deleteById(int id);

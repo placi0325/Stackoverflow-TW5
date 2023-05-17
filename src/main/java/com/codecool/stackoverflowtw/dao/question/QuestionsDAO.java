@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface QuestionsDAO {
 
-    void create (String title, String description, int userId);
+    int create (String title, String description, int userId);
     List<Question> listAllQuestions (String parameter);
     Optional<Question> getById (int id);
     boolean deleteById(int id);

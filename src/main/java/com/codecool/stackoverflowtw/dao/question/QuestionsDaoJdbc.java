@@ -26,13 +26,13 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
 
 
     @Override
-    public void create(String title, String description, int userId) {
+    public int create(String title, String description, int userId) {
         Timestamp timestamp = Timestamp.from(Instant.now());
         int ANSWER_COUNT = new Random().nextInt(100);
         String query = "INSERT INTO questions (title, description, timestamp, answer_count, user_id)" +
                 " VALUES(?, ?, ?, ?, ?)";
-        jdbcTemplate.update(query, new Object[]{title, description, timestamp, ANSWER_COUNT, userId});
         System.out.println("New question created");
+        return jdbcTemplate.update(query, new Object[]{title, description, timestamp, ANSWER_COUNT, userId});
     }
 
     @Override

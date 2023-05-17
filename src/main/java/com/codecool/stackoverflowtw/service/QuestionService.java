@@ -7,9 +7,6 @@ import com.codecool.stackoverflowtw.dao.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +22,7 @@ public class QuestionService {
 
     public List<QuestionDTO> getAllQuestions(String parameter) {
         List<Question> questions = questionsDAO.listAllQuestions(parameter);
-        return questions.stream().map(question -> convertQestionIntoQuestionDTO(question)).toList();
+        return questions.stream().map(question -> convertQuestionIntoQuestionDTO(question)).toList();
         // TODO
     }
 
@@ -33,7 +30,7 @@ public class QuestionService {
     public QuestionDTO getQuestionById(int id) {
         // TODO
         Optional<Question> question = questionsDAO.getById(id);
-        return question.isPresent() ? convertQestionIntoQuestionDTO(question.get()) : null;
+        return question.isPresent() ? convertQuestionIntoQuestionDTO(question.get()) : null;
 
     }
 
@@ -42,12 +39,12 @@ public class QuestionService {
         return questionsDAO.deleteById(id);
     }
 
-    public void addNewQuestion(NewQuestionDTO question) {
+    public int addNewQuestion(NewQuestionDTO question) {
         // TODO
-        questionsDAO.create(question.title(), question.description(), question.userId());
+        return questionsDAO.create(question.title(), question.description(), question.userId());
     }
 
-    private QuestionDTO convertQestionIntoQuestionDTO (Question question){
+    private QuestionDTO convertQuestionIntoQuestionDTO(Question question){
         return new QuestionDTO(
                 question.getId(),
                 question.getTitle(),

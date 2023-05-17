@@ -2,9 +2,11 @@ package com.codecool.stackoverflowtw.dao.user;
 
 import com.codecool.stackoverflowtw.dao.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+import java.util.Optional;
+@Repository
 public class UserDAOJdbc implements UserDAO{
     private JdbcTemplate jdbcTemplate;
     private UserMapper userMapper;
@@ -15,10 +17,12 @@ public class UserDAOJdbc implements UserDAO{
     }
 
     @Override
-    public void createUser(String name, String password) {
+    public int createUser(String name, String password) {
         String query = "INSERT INTO users (username, password) VALUES (?, ?);";
-        jdbcTemplate.update(query, name, password);
+        int rowsAffected = jdbcTemplate.update(query, name, password);
+        System.out.println("Affected rows: " + rowsAffected);
         System.out.println("New user created.");
+        return rowsAffected;
     }
 
     @Override
@@ -29,23 +33,28 @@ public class UserDAOJdbc implements UserDAO{
     }
 
     @Override
-    public User getById(int id) {
+    public Optional<User> getById(int id) {
         String query = "SELECT * FROM users WHERE id=" + id;
-        return jdbcTemplate.query(query, userMapper).get(0);
+        return jdbcTemplate.query(query, userMapper).stream().findFirst();
     }
 
     @Override
-    public void updateUsername(String newUsername) {
-
+    public void updateUsername(String oldUsername, String newUsername) {
+        String query = String.format("UPDATE users SET username = %s WHERE username = %s", oldUsername, newUsername);
+        int rowsAffected = jdbcTemplate.update(query);
+        System.out.println("Affected rows: " + rowsAffected);
     }
 
     @Override
-    public void updatePassword(String password) {
-
+    public void updatePassword(String username, String newPassword) {
+        String query = String.format("UPDATE users SET password = %s WHERE username = %s", newPassword, username);
+        int rowsAffected = jdbcTemplate.update(query);
+        System.out.println("Affected rows: " + rowsAffected);
     }
 
     @Override
     public boolean deleteById(int id) {
-        return false;
+        String query = "DELETE FROM users WHERE id = " + id;
+        return jdbcTemplate.update(query) == 1;
     }
 }

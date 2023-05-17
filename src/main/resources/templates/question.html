@@ -10,6 +10,14 @@
     <p th:text="${question.description()}"></p>
     <p th:text="${#dates.format(question.timestamp(), 'yyyy-MM-dd hh:mm:ss')}"></p>
     <p> Answer count: <span th:text=" ${question.answerCount()}"></span></p>
+    <br>
+    <h4>Answer to the question!</h4>
+    <form>
+        <textarea rows="5" cols="50" name="description">
+            Enter your answer
+        </textarea>
+        <input type = "submit" value = "Submit" />
+    </form>
 </div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 package com.codecool.stackoverflowtw.controller;
 
-import com.codecool.stackoverflowtw.controller.dto.question.QuestionDTO;
+import com.codecool.stackoverflowtw.controller.dto.QuestionDTO;
 import com.codecool.stackoverflowtw.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +16,6 @@ public class QuestionController {
     public QuestionController(QuestionService questionService) {
         this.questionService = questionService;
     }
-
-//    @GetMapping
-//    public String sortQuestions(@RequestParam String order_by) {
-//        questionService.getAllQuestions(order_by);
-//        return "redirect:/";
-//    }
 
     @GetMapping("/all")
     public List<QuestionDTO> getAllQuestions(@RequestParam String order_by) {

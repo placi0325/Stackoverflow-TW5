@@ -16,8 +16,8 @@
     <input type="text" id="title" name="title" class="form"><br>
     <label class='label' for="description">Description:</label><br>
     <input type="text" id="description" name="description" class="form"><br>
-    <label class='label' for="user-id">User id:</label><br>
-    <input type="text" id="user-id" name="user-id" class="form"><br>
+    <label class='label' for="user_id">User id:</label><br>
+    <input type="text" id="user_id" name="user_id" class="form"><br>
     <br>
     <button type="submit">Submit</button>
 </form>
@@ -27,13 +27,13 @@
 <h2>Questions</h2>
 <br>
 <div id="sorting">
-    <a href="/?order-by=title">
+    <a href="/?order_by=title">
         <button class="sorting-button"> Sort By Title</button>
     </a>
-    <a href="/?order-by=timestamp">
+    <a href="/?order_by=timestamp">
         <button class="sorting-button">Sort By Time</button>
     </a>
-    <a href="/?order-by=answer-count">
+    <a href="/?order_by=answer_count">
         <button class="sorting-button">Sort By Answer Count</button>
     </a>
 </div>
@@ -42,11 +42,10 @@
 <div id="questions">
     <div th:each="question:${questions}">
         <a th:href="'/question/' + ${question.id()}">
-            <h3 th:text="${question.title()}"></h3>
+            <h3 th:text="${question.title()}"></h3></a>
             <p th:text="${question.description()}"></p>
             <p th:text="${#dates.format(question.timestamp(), 'yyyy-MM-dd hh:mm:ss')}"></p>
             <p> Answer count: <span th:text=" ${question.answerCount()}"></span></p>
-        </a>
     </div>
 </div>
 

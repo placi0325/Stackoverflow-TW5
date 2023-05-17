@@ -1,4 +1,4 @@
-package com.codecool.stackoverflowtw.dao;
+package com.codecool.stackoverflowtw.dao.question;
 
 import com.codecool.stackoverflowtw.dao.model.Question;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,7 +11,6 @@ import java.sql.SQLException;
 
 @Component
 public class QuestionMapper implements RowMapper<Question> {
-
     public Question mapRow (ResultSet resultSet, int rowNum) throws SQLException {
         Question question = new Question();
         question.setId(resultSet.getInt("id"));

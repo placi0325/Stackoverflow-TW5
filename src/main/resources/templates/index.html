@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Example Title</title>
+    <title>Stackoverflow</title>
     <link th:href="@{/style.css}" rel="stylesheet">
 </head>
 <body>
@@ -16,8 +16,8 @@
     <input type="text" id="title" name="title" class="form"><br>
     <label class='label' for="description">Description:</label><br>
     <input type="text" id="description" name="description" class="form"><br>
-    <label class='label' for="user_id">User id:</label><br>
-    <input type="text" id="user_id" name="user_id" class="form"><br>
+    <label class='label' for="user-id">User id:</label><br>
+    <input type="text" id="user-id" name="user-id" class="form"><br>
     <br>
     <button type="submit">Submit</button>
 </form>
@@ -26,25 +26,27 @@
 
 <h2>Questions</h2>
 <br>
-<form method="get" id="order-by-title" action="/" class="form-button">
-    <input hidden="hidden" type="text" name="order_by" value="title">
-    <button type="submit">Sort By Title</button>
-</form>
-<form method="get" id="order-by-timestamp" action="/" class="form-button">
-    <input hidden="hidden" type="text" name="order_by" value="timestamp">
-    <button type="submit">Sort By Time</button>
-</form>
-<form method="get" id="order-by-answer-count" action="/" class="form-button">
-    <input hidden="hidden" type="text" name="order_by" value="answer_count">
-    <button type="submit">Sort By Answer Count</button>
-</form>
+<div id="sorting">
+    <a href="/?order-by=title">
+        <button class="sorting-button"> Sort By Title</button>
+    </a>
+    <a href="/?order-by=timestamp">
+        <button class="sorting-button">Sort By Time</button>
+    </a>
+    <a href="/?order-by=answer-count">
+        <button class="sorting-button">Sort By Answer Count</button>
+    </a>
+</div>
+
 <br>
 <div id="questions">
     <div th:each="question:${questions}">
-        <h3 th:text="${question.title()}"></h3>
-        <p th:text="${question.description()}"></p>
-        <p th:text="${#dates.format(question.timestamp(), 'yyyy-MM-dd hh:mm:ss')}"></p>
-        <p> Answer count: <span th:text=" ${question.answerCount()}"></span></p>
+        <a th:href="'/question/' + ${question.id()}">
+            <h3 th:text="${question.title()}"></h3>
+            <p th:text="${question.description()}"></p>
+            <p th:text="${#dates.format(question.timestamp(), 'yyyy-MM-dd hh:mm:ss')}"></p>
+            <p> Answer count: <span th:text=" ${question.answerCount()}"></span></p>
+        </a>
     </div>
 </div>
 

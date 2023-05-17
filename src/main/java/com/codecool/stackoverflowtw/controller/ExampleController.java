@@ -1,8 +1,6 @@
 package com.codecool.stackoverflowtw.controller;
 
-import com.codecool.stackoverflowtw.controller.dto.NewQuestionDTO;
-import com.codecool.stackoverflowtw.controller.dto.QuestionDTO;
-import com.codecool.stackoverflowtw.dao.model.Question;
+import com.codecool.stackoverflowtw.controller.dto.question.NewQuestionDTO;
 import com.codecool.stackoverflowtw.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.Map;
 
 
 @Controller
@@ -25,21 +22,27 @@ public class ExampleController {
         this.questionService = questionService;
     }
 
+
     @GetMapping
-    public String index(Model model, @RequestParam(required = false) HashMap<String,String> allParams) {
-        model.addAttribute("questions", questionController.getAllQuestions(allParams.get("order_by")));
+    public String index(Model model, @RequestParam(required = false) HashMap<String, String> allParams) {
+        model.addAttribute("questions", questionController.getAllQuestions(allParams.get("order-by")));
         return "index";
     }
 
     @PostMapping("/new-question")
-    public String addNewQuestion(@RequestParam HashMap<String,String> allParams){
+    public String addNewQuestion(@RequestParam HashMap<String, String> allParams) {
         System.out.println(allParams.entrySet());
         NewQuestionDTO newQuestionDTO = new NewQuestionDTO(allParams.get("title"), allParams.get("description"),
-                Integer.parseInt(allParams.get("user_id")));
+                Integer.parseInt(allParams.get("user-id")));
         questionService.addNewQuestion(newQuestionDTO);
-      return "redirect:/";
+        return "redirect:/";
     }
 
+    @GetMapping("/question/{id}")
+    public String questionPage(Model model, @PathVariable int id) {
+        model.addAttribute("question", questionController.getQuestionById(id));
+        return "question";
+    }
 
 
     @GetMapping("/path/{name}")

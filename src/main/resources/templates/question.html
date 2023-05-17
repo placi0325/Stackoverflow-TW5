@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'question' + ${question.id()}"></title>
+</head>
+<body>
+<div id="question">
+    <h3 th:text="${question.title()}"></h3>
+    <p th:text="${question.description()}"></p>
+    <p th:text="${#dates.format(question.timestamp(), 'yyyy-MM-dd hh:mm:ss')}"></p>
+    <p> Answer count: <span th:text=" ${question.answerCount()}"></span></p>
+</div>
+</body>
+</html>

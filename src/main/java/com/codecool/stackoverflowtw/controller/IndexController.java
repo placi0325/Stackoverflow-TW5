@@ -22,7 +22,6 @@ public class IndexController {
         this.questionService = questionService;
     }
 
-
     @GetMapping
     public String index(Model model, @RequestParam(required = false) HashMap<String, String> allParams) {
         model.addAttribute("questions", questionController.getAllQuestions(allParams.get("order_by")));
@@ -50,6 +49,7 @@ public class IndexController {
         model.addAttribute("name", name);
         return "index";
     }
+
 
     @GetMapping("/param")
     public String exampleWithRequestParam(@RequestParam String name, Model model) {

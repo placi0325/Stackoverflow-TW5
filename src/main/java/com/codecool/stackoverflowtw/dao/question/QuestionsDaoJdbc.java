@@ -1,4 +1,4 @@
-package com.codecool.stackoverflowtw.dao;
+package com.codecool.stackoverflowtw.dao.question;
 
 import com.codecool.stackoverflowtw.dao.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Repository
@@ -25,13 +26,13 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
 
 
     @Override
-    public void create(String title, String description, int userId) {
+    public int create(String title, String description, int userId) {
         Timestamp timestamp = Timestamp.from(Instant.now());
         int ANSWER_COUNT = new Random().nextInt(100);
         String query = "INSERT INTO questions (title, description, timestamp, answer_count, user_id)" +
                 " VALUES(?, ?, ?, ?, ?)";
-        jdbcTemplate.update(query, new Object[]{title, description, timestamp, ANSWER_COUNT, userId});
         System.out.println("New question created");
+        return jdbcTemplate.update(query, new Object[]{title, description, timestamp, ANSWER_COUNT, userId});
     }
 
     @Override
@@ -43,9 +44,9 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
     }
 
     @Override
-    public Question getById(int id) {
+    public Optional<Question> getById(int id) {
         String questionQuery = "SELECT * from questions WHERE id =" + id;
-        return jdbcTemplate.query(questionQuery, questionMapper).get(0);
+        return jdbcTemplate.query(questionQuery, questionMapper).stream().findFirst();
     }
 
     @Override

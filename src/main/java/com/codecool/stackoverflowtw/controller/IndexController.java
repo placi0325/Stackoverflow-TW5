@@ -50,8 +50,6 @@ public class IndexController {
         return "redirect:/";
     }
 
-
-
     @GetMapping("/path/{name}")
     public String exampleWithPathVariable(@PathVariable String name, Model model) {
         model.addAttribute("name", name);

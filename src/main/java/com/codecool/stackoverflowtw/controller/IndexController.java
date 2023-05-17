@@ -41,6 +41,12 @@ public class IndexController {
       return "redirect:/";
     }
 
+    @GetMapping("/question/{id}")
+    public String questionPage(Model model, @PathVariable int id) {
+        model.addAttribute("question", questionController.getQuestionById(id));
+        return "question";
+    }
+
     @PostMapping("/new-answer")
     public String addNewAnswer(@RequestParam HashMap<String,String> allParams){
         System.out.println(allParams.entrySet());

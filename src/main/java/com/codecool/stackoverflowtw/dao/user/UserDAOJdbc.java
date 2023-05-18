@@ -39,6 +39,12 @@ public class UserDAOJdbc implements UserDAO{
     }
 
     @Override
+    public Optional<User> getByName(String username) {
+        String query = "SELECT * FROM users WHERE username = " + username;
+        return jdbcTemplate.query(query, userMapper).stream().findFirst();
+    }
+
+    @Override
     public void updateUsername(String oldUsername, String newUsername) {
         String query = String.format("UPDATE users SET username = %s WHERE username = %s", oldUsername, newUsername);
         int rowsAffected = jdbcTemplate.update(query);

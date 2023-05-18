@@ -17,8 +17,11 @@
         <textarea rows="5" cols="50" name="description">
             Enter your answer
         </textarea>
-        <label class='label' for="user_id">User id:</label><br>
-        <input type="text" id="user_id" name="user_id" class="form"><br>
+        <div>
+            <label class='label' for="user_id">User id:</label><br>
+            <input type="text" id="user_id" name="user_id" class="form">
+        </div>
+        <br>
         <input type="hidden" name="question_id" th:value="${question.id()}">
         <button type="submit">Submit</button>
     </form>

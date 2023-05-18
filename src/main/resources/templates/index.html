@@ -43,7 +43,7 @@
 
 <br>
 <div id="questions">
-    <div th:each="question:${questions}">
+    <div th:each="question:${questions}" class="question">
         <a th:href="'/question/' + ${question.id()}">
             <h3 th:text="${question.title()}"></h3></a>
             <p th:text="${question.description()}"></p>

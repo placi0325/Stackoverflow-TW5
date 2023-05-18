@@ -35,17 +35,9 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public boolean login(@RequestBody LoginDTO loginDTO){
+    public UserDTO login(@RequestBody LoginDTO loginDTO){
         String username = loginDTO.username();
-        String password = loginDTO.password();
-
-        UserDTO userFromDatabase = userService.getUserByName(username);
-        if(userFromDatabase != null){
-            if(password.equals(userFromDatabase.password())){
-                return true;
-            }
-        }
-        return false;
+        return userService.getUserByName(username);
     }
 
     @DeleteMapping("/{id}")

@@ -12,13 +12,15 @@
     <p th:text="${#dates.format(question.timestamp(), 'yyyy-MM-dd hh:mm:ss')}"></p>
     <p> Answer count: <span th:text=" ${question.answerCount()}"></span></p>
     <br>
-    <h4>Answer to the question!</h4>
+    <h4>Enter your answer here:</h4>
     <form method="post" action="/new-answer">
         <textarea rows="5" cols="50" name="description">
-            Enter your answer
         </textarea>
-        <label class='label' for="user_id">User id:</label><br>
-        <input type="text" id="user_id" name="user_id" class="form"><br>
+        <div class="userid">
+            <label class='label' for="user_id">User id:</label><br>
+            <input type="text" id="user_id" name="user_id" class="form">
+        </div>
+        <br>
         <input type="hidden" name="question_id" th:value="${question.id()}">
         <button type="submit">Submit</button>
     </form>

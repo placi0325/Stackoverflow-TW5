@@ -1,5 +1,6 @@
 package com.codecool.stackoverflowtw.controller;
 
+import com.codecool.stackoverflowtw.controller.dto.LoginDTO;
 import com.codecool.stackoverflowtw.controller.dto.NewAnswerDTO;
 import com.codecool.stackoverflowtw.controller.dto.NewQuestionDTO;
 import com.codecool.stackoverflowtw.controller.dto.NewUserDTO;
@@ -37,10 +38,14 @@ public class IndexController {
     }
 
     @GetMapping("/signup")
-    public String signup(){
+    public String signupPage(){
         return "signup";
     }
 
+    @GetMapping("/login")
+    public String loginPage(){
+        return "login";
+    }
     @PostMapping("/new-question")
     public String addNewQuestion(@RequestParam HashMap<String,String> allParams){
         System.out.println(allParams.entrySet());
@@ -73,6 +78,13 @@ public class IndexController {
         return "redirect:/";
     }
 
+    @PostMapping("/login-user")
+    public String loginUser(@RequestParam HashMap<String, String> allParams){
+        System.out.println(allParams.entrySet());
+        LoginDTO loginDTO= new LoginDTO(allParams.get("username"), allParams.get("password"));
+        // Use login method in UserController
+        return "redirect:/";
+    }
     @GetMapping("/path/{name}")
     public String exampleWithPathVariable(@PathVariable String name, Model model) {
         model.addAttribute("name", name);

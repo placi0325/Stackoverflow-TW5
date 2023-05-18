@@ -23,7 +23,7 @@ public class Question {
     @Column(name = "timestamp")
     private Timestamp timestamp;
 
-    @Column(name = "answer_count")
+    /*@Column(name = "answer_count")*/
     private int answerCount;
 
     @Column(name = "user_id")

@@ -29,6 +29,11 @@ public class UserService {
         return  userById.isPresent() ? convertUserToUserDTO(userById.get()) : null;
     }
 
+    public UserDTO getUserByName(String username){
+        Optional<User> userByName = userDAO.getByName(username);
+        return  userByName.isPresent() ? convertUserToUserDTO(userByName.get()) : null;
+    }
+
     public boolean deleteUserById(int id){
         return userDAO.deleteById(id);
     }

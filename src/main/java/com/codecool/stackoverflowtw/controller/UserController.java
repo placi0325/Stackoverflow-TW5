@@ -1,5 +1,6 @@
 package com.codecool.stackoverflowtw.controller;
 
+import com.codecool.stackoverflowtw.controller.dto.LoginDTO;
 import com.codecool.stackoverflowtw.controller.dto.NewUserDTO;
 import com.codecool.stackoverflowtw.controller.dto.UserDTO;
 import com.codecool.stackoverflowtw.service.UserService;
@@ -33,6 +34,11 @@ public class UserController {
         return userService.addNewUser(newUser);
     }
 
+    @PostMapping("/login")
+    public UserDTO login(@RequestBody LoginDTO loginDTO){
+        String username = loginDTO.username();
+        return userService.getUserByName(username);
+    }
 
     @DeleteMapping("/{id}")
     public boolean deleteUserById(@PathVariable int id){

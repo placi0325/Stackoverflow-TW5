@@ -1,9 +1,6 @@
 package com.codecool.stackoverflowtw.controller;
 
-import com.codecool.stackoverflowtw.controller.dto.LoginDTO;
-import com.codecool.stackoverflowtw.controller.dto.NewAnswerDTO;
-import com.codecool.stackoverflowtw.controller.dto.NewQuestionDTO;
-import com.codecool.stackoverflowtw.controller.dto.NewUserDTO;
+import com.codecool.stackoverflowtw.controller.dto.*;
 import com.codecool.stackoverflowtw.service.AnswerService;
 import com.codecool.stackoverflowtw.service.QuestionService;
 import com.codecool.stackoverflowtw.service.UserService;
@@ -19,16 +16,20 @@ import java.util.HashMap;
 @RequestMapping("/")
 public class IndexController {
     private final QuestionController questionController;
+    private final UserController userController;
     private final QuestionService questionService;
     private final AnswerService answerService;
     private final UserService userService;
 
     @Autowired
-    public IndexController(QuestionController questionController, QuestionService questionService, AnswerService answerService, UserService userService) {
+    public IndexController(QuestionController questionController, QuestionService questionService,
+                           AnswerService answerService, UserService userService,
+                           UserController userController) {
         this.questionController = questionController;
         this.questionService = questionService;
         this.answerService = answerService;
         this.userService = userService;
+        this.userController = userController;
     }
 
     @GetMapping
@@ -82,8 +83,14 @@ public class IndexController {
     public String loginUser(@RequestParam HashMap<String, String> allParams){
         System.out.println(allParams.entrySet());
         LoginDTO loginDTO= new LoginDTO(allParams.get("username"), allParams.get("password"));
-        // Use login method in UserController
-        return "redirect:/";
+        String password = loginDTO.password();
+        UserDTO userFromDatabase = userController.login(loginDTO);
+        if(userFromDatabase != null){
+            if(password.equals(userFromDatabase.password())){
+                return "redirect:/";
+            }
+        }
+        return "redirect:/login";
     }
     @GetMapping("/path/{name}")
     public String exampleWithPathVariable(@PathVariable String name, Model model) {

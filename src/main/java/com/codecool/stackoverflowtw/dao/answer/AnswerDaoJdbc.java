@@ -27,6 +27,8 @@ public class AnswerDaoJdbc implements AnswerDAO {
         String query = "INSERT INTO answers (description, time_stamp, question_id, user_id)" + " VALUES (?,?,?,?)";
         int rowsAffected = jdbcTemplate.update(query, new Object[]{description, timestamp, questionId, userId});
         System.out.println("New answer created");
+
+        //
         return rowsAffected;
     }
 

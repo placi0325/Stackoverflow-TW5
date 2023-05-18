@@ -1,22 +1,101 @@
 *{
     font-family: Verdana;
 }
-p, button, label {
+
+body {
+    background: #800f2f;
+}
+p,label {
     font-size: 20px;
+    color: #ff4d6d;
 }
 
 h1{
     font-size: 36px;
+    color: #ff4d6d;
 }
 
 h2{
     font-size: 30px;
+    color: #ff4d6d;
 }
 
 h3{
     font-size: 24px;
+    color: #ff4d6d;
+    text-decoration: none;
 }
 
-.form-button{
+textarea, input {
+    background: #ff4d6d;
+    border: #ff4d6d 0.125em solid;
+    border-radius: 0.25em;
+}
+
+button{
     display: inline;
+    margin: 10px;
+    background-color: #800f2f;
+    color: #ff4d6d;
+    border: #ff4d6d 0.125em solid;
+    border-radius: 0.25em;
+    padding: 0.25em 1em;
+    box-shadow: inset 0 0 0.5em 0 #ff4d6d, 0 0 0.5em 0 #ff4d6d;
+    cursor: pointer;
+    font-size: 20px;
+    text-decoration: none;
+    text-shadow: 0 0 0.25em #ff4d6d;
+    position: relative;
+    transition: background-color 100ms linear;
+}
+
+button::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ff4d6d;
+    transform: perspective(1.5em) rotateX(40deg) scale(1, 0.35);
+    filter: blur(1em);
+    opacity: 0.7;
+}
+button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em #ff4d6d;
+    opacity: 0;
+    transition: opacity 100ms linear;
+}
+
+button:hover,
+button:focus {
+    background-color: #ff4d6d;
+    color: #800f2f;
+    text-shadow: none;
+}
+
+button:hover::before,
+button:focus::before {
+    opacity: 1;
+}
+
+button:hover::after,
+button:focus::after {
+    opacity: 1;
+}
+.question {
+    background: black;
+    opacity: 0.75;
+    border: #ff4d6d 0.125em solid;
+    border-radius: 0.25em;
+    padding: 0.25em 1em;
+    margin: 10px;
+    box-shadow: inset 0 0 0.5em 0 #ff4d6d, 0 0 0.5em 0 #ff4d6d;
 }

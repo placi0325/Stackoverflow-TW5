@@ -40,20 +40,20 @@ public class UserDAOJdbc implements UserDAO{
 
     @Override
     public Optional<User> getByName(String username) {
-        String query = "SELECT * FROM users WHERE username = " + username;
+        String query = String.format("SELECT * FROM users WHERE username = '%s'", username);
         return jdbcTemplate.query(query, userMapper).stream().findFirst();
     }
 
     @Override
     public void updateUsername(String oldUsername, String newUsername) {
-        String query = String.format("UPDATE users SET username = %s WHERE username = %s", oldUsername, newUsername);
+        String query = String.format("UPDATE users SET username = '%s' WHERE username = '%s'", oldUsername, newUsername);
         int rowsAffected = jdbcTemplate.update(query);
         System.out.println("Affected rows: " + rowsAffected);
     }
 
     @Override
     public void updatePassword(String username, String newPassword) {
-        String query = String.format("UPDATE users SET password = %s WHERE username = %s", newPassword, username);
+        String query = String.format("UPDATE users SET password = '%s' WHERE username = '%s'", newPassword, username);
         int rowsAffected = jdbcTemplate.update(query);
         System.out.println("Affected rows: " + rowsAffected);
     }

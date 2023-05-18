@@ -36,6 +36,11 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/signup")
+    public String signup(){
+        return "signup";
+    }
+
     @PostMapping("/new-question")
     public String addNewQuestion(@RequestParam HashMap<String,String> allParams){
         System.out.println(allParams.entrySet());

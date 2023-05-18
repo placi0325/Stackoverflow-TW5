@@ -34,7 +34,7 @@ h4 {
 
 a>h3:hover{
     color: #14746f;
-    box-shadow: 0em 0em 2em 0.5em #14746f;
+    box-shadow: 0 0 2em 0.5em #14746f;
     transition: opacity 100ms linear;
     border-radius: 0.25em;
 }

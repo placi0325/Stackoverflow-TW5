@@ -8,19 +8,30 @@
 <body>
 <h1>Welcome to Stackoverflow!</h1>
 
-<a href="/login"><button>Log in</button></a>
-<a href="/signup"><button>Sign up</button></a>
+<a href="/login">
+    <button>Log in</button>
+</a>
+<a href="/signup">
+    <button>Sign up</button>
+</a>
 
 <br>
 
 <h2>Submit question:</h2>
 <form method="post" action="/new-question">
-    <label class='label' for="title">Title:</label><br>
-    <input type="text" id="title" name="title" class="form"><br>
-    <label class='label' for="description">Description:</label><br>
-    <input type="text" id="description" name="description" class="form"><br>
-    <label class='label' for="user_id">User id:</label><br>
-    <input type="text" id="user_id" name="user_id" class="form"><br>
+    <div class="form">
+        <label class='label' for="title">Title:</label><br>
+        <input type="text" id="title" name="title" class="form"><br>
+    </div>
+    <div class="form">
+        <label class='label' for="description">Description:</label><br>
+        <textarea id="description" rows="5" cols="50" name="description">
+        </textarea><br>
+    </div>
+    <div class="form">
+        <label class='label' for="user_id">User id:</label><br>
+        <input type="text" id="user_id" name="user_id" class="form"><br>
+    </div>
     <br>
     <button type="submit">Submit</button>
 </form>
@@ -46,9 +57,9 @@
     <div th:each="question:${questions}" class="question">
         <a th:href="'/question/' + ${question.id()}">
             <h3 th:text="${question.title()}"></h3></a>
-            <p th:text="${question.description()}"></p>
-            <p th:text="${#dates.format(question.timestamp(), 'yyyy-MM-dd hh:mm:ss')}"></p>
-            <p> Answer count: <span th:text=" ${question.answerCount()}"></span></p>
+        <p th:text="${question.description()}"></p>
+        <p th:text="${#dates.format(question.timestamp(), 'yyyy-MM-dd hh:mm:ss')}"></p>
+        <p> Answer count: <span th:text=" ${question.answerCount()}"></span></p>
     </div>
 </div>
 

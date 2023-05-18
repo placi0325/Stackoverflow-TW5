@@ -1,4 +1,4 @@
-package com.codecool.stackoverflowtw.dao;
+package com.codecool.stackoverflowtw.dao.answer;
 
 import com.codecool.stackoverflowtw.dao.model.Answer;
 import org.springframework.jdbc.core.RowMapper;

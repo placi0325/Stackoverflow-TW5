@@ -28,7 +28,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
     @Override
     public int create(String title, String description, int userId) {
         Timestamp timestamp = Timestamp.from(Instant.now());
-        int ANSWER_COUNT = new Random().nextInt(100);
+        int ANSWER_COUNT = 0;
         String query = "INSERT INTO questions (title, description, timestamp, answer_count, user_id)" +
                 " VALUES(?, ?, ?, ?, ?)";
         System.out.println("New question created");
@@ -38,14 +38,30 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
     @Override
     public List<Question> listAllQuestions(String parameter) {
         String questionsQuery = parameter == null ?
-                "SELECT * FROM questions" : "SELECT * FROM questions ORDER BY " + parameter;
+                "SELECT questions.*, CAST(COUNT(answers.id) AS integer)AS answer_count " +
+                 "FROM questions " +
+                 "LEFT JOIN answers ON questions.id = answers.question_id " +
+                 "GROUP BY questions.id "
+
+                :
+
+                "SELECT questions.*, CAST(COUNT(answers.id) AS integer)AS answer_count " +
+                "FROM questions " +
+                "LEFT JOIN answers ON questions.id = answers.question_id " +
+                "GROUP BY questions.id " +
+                "ORDER BY " + parameter;
+
         List<Question> questions = jdbcTemplate.query(questionsQuery, questionMapper);
         return questions;
     }
 
     @Override
     public Optional<Question> getById(int id) {
-        String questionQuery = "SELECT * from questions WHERE id =" + id;
+        String questionQuery = "SELECT questions.*, CAST(COUNT(answers.id) AS integer) AS answer_count " +
+                "FROM questions " +
+                "LEFT JOIN answers ON questions.id = answers.question_id " +
+                "WHERE questions.id = " + id +
+                " GROUP BY questions.id ";
         return jdbcTemplate.query(questionQuery, questionMapper).stream().findFirst();
     }
 

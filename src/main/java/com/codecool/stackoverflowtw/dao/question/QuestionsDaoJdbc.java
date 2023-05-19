@@ -28,11 +28,10 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
     @Override
     public int create(String title, String description, int userId) {
         Timestamp timestamp = Timestamp.from(Instant.now());
-        int ANSWER_COUNT = 0;
-        String query = "INSERT INTO questions (title, description, timestamp, answer_count, user_id)" +
-                " VALUES(?, ?, ?, ?, ?)";
+        String query = "INSERT INTO questions (title, description, timestamp, user_id)" +
+                " VALUES(?, ?, ?, ?)";
         System.out.println("New question created");
-        return jdbcTemplate.update(query, new Object[]{title, description, timestamp, ANSWER_COUNT, userId});
+        return jdbcTemplate.update(query, new Object[]{title, description, timestamp, userId});
     }
 
     @Override

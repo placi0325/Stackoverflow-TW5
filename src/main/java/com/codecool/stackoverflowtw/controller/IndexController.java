@@ -19,22 +19,30 @@ public class IndexController {
     private final UserController userController;
     private final QuestionService questionService;
     private final AnswerService answerService;
+    private final AnswerController answerController;
     private final UserService userService;
+    private Session session;
 
     @Autowired
     public IndexController(QuestionController questionController, QuestionService questionService,
-                           AnswerService answerService, UserService userService,
-                           UserController userController) {
+                           AnswerService answerService, AnswerController answerController,
+                           UserService userService, UserController userController) {
         this.questionController = questionController;
         this.questionService = questionService;
         this.answerService = answerService;
+        this.answerController = answerController;
         this.userService = userService;
         this.userController = userController;
+        this.session = null;
     }
 
     @GetMapping
     public String index(Model model, @RequestParam(required = false) HashMap<String,String> allParams) {
         model.addAttribute("questions", questionController.getAllQuestions(allParams.get("order_by")));
+        int sessionNumber = session == null ? -1 : session.userId();
+        model.addAttribute("sessionNumber", sessionNumber);
+        String userName = session == null ? "" : userController.getUserById(session.userId()).username();
+        model.addAttribute("userName", userName);
         return "index";
     }
 
@@ -46,6 +54,12 @@ public class IndexController {
     @GetMapping("/login")
     public String loginPage(){
         return "login";
+    }
+
+    @GetMapping("/logout")
+    public String logout(){
+        session = null;
+        return "redirect:/";
     }
     @PostMapping("/new-question")
     public String addNewQuestion(@RequestParam HashMap<String,String> allParams){
@@ -59,7 +73,16 @@ public class IndexController {
     @GetMapping("/question/{id}")
     public String questionPage(Model model, @PathVariable int id) {
         model.addAttribute("question", questionController.getQuestionById(id));
+        int sessionNumber = session == null ? -1 : session.userId();
+        model.addAttribute("sessionNumber", sessionNumber);
+        model.addAttribute("answers", answerController.getAllAnswersByQuestionId(id));
         return "question";
+    }
+
+    @GetMapping("/delete-question/{id}")
+    public String deleteQuestion(@PathVariable int id){
+        questionController.deleteQuestionById(id);
+        return "redirect:/";
     }
 
     @PostMapping("/new-answer")
@@ -87,6 +110,7 @@ public class IndexController {
         UserDTO userFromDatabase = userController.login(loginDTO);
         if(userFromDatabase != null){
             if(password.equals(userFromDatabase.password())){
+                session = new Session(userFromDatabase.id());
                 return "redirect:/";
             }
         }

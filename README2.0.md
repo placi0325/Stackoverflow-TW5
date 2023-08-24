@@ -26,19 +26,19 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Stackoverflow</h3>
+<h3 align="center">:ocean:Stackoverflow:ocean:</h3>
 
   <p align="center">
     This is a full stack project with JAVA Spring backend and Thymeleaf frontend. The theme is a web application similar to Stackoverflow.
     <br />
-    <a href="https://github.com/placi0325/Stackoverflow-TW5"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/placi0325/Stackoverflow-TW5"><strong>Explore the docs :arrow_right:</strong></a>
     <br />
     <br />
-    <a href="https://github.com/placi0325/Stackoverflow-TW5">View Demo</a>
+    <a href="https://github.com/placi0325/Stackoverflow-TW5">View Demo :computer:</a>
     ·
-    <a href="https://github.com/placi0325/Stackoverflow-TW5/issues">Report Bug</a>
+    <a href="https://github.com/placi0325/Stackoverflow-TW5/issues">Report Bug :lady_beetle:</a>
     ·
-    <a href="https://github.com/placi0325/Stackoverflow-TW5/issues">Request Feature</a>
+    <a href="https://github.com/placi0325/Stackoverflow-TW5/issues">Request Feature :memo:</a>
   </p>
 </div>
 
@@ -77,7 +77,7 @@
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">:top:</a>)</p>
 
 
 
@@ -87,15 +87,14 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * [![Spring][Spring.img]][Spring-url]
 * [![Postgres][Postgres.img]][Postgres-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">:top:</a>)</p>
 
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Please see the core dependencies and installation steps below:
 
 ### Prerequisites
 1. JAVA
@@ -115,13 +114,13 @@ To get a local copy up and running follow these simple example steps.
 5. Install an integrated development environment(IDE) - IntelliJ IDEA
 6. Install PostgreSQL
 7. Create a database in PostgreSQL named „stackoverflow”
-8. Open the project in IntelliJ from the pom.xml file
+8. Open the project in IntelliJ from the pom.xml file :open_file_folder:
 9. Change the value of the „spring.datasource.username” and the „spring.datasource.password” variables to your PostgreSQL username and password in the src/main/resources/application.properties file.
 10. Run the application by the "Run" button in the top right corner or with Shift + F10 shortcut
 11. This will start the project, and you can reach in your browser, on the following URL: http://localhost:8080/
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">:top:</a>)</p>
 
 
 
@@ -136,7 +135,7 @@ To get a local copy up and running follow these simple example steps.
  7. Feature to Login with user and store session (who is currently logged in is always visible on frontend)
  8. Feature to Logout user
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">:top:</a>)</p>
 
 
 <!-- CONTRIBUTING -->
@@ -146,24 +145,13 @@ This project was made by three Codecool students: Anna Cseke, Péter Jung, Péte
 <!-- CONTACT -->
 ## Contact
 
-Anna Cseke - anna.cseke@gmail.com
-Péter Jung - jung.peter24@gmail.com
-László Péterfi - peterfi.laci.0325@gmail.com
+:woman_technologist: Anna Cseke - :email: anna.cseke@gmail.com<br>
+:man_technologist: Péter Jung - :email: jung.peter24@gmail.com<br>
+:man_technologist: László Péterfi - :email: peterfi.laci.0325@gmail.com<br>
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/placi0325/Stackoverflow-TW5)
+Project Link: [https://github.com/placi0325/Stackoverflow-TW5](https://github.com/placi0325/Stackoverflow-TW5)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">:top:</a>)</p>
 
 
 

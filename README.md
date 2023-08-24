@@ -29,7 +29,8 @@ Here you can try the features of the project.
 - Feature to add new question (redirects to question detail page after save)
 - Feature to add new answer (location: question detail page)
 - Feature to Register new user
-- Feature to Login with user
+- Feature to Login with user and store session (who is currently logged in is always visible on frontend)
+- Feature to Logout user
 
 ### Contributing
 This project was made by three Codecool students: Anna Cseke, Péter Jung, Péterfi László.

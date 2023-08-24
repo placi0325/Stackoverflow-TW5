@@ -1,4 +1,5 @@
 # Stackoverflow TW Project
+
 ### Description
 - This is a full stack project with JAVA Spring backend and Thymeleaf frontend. The theme is a web application
   similar to Stackoverflow.
@@ -28,6 +29,7 @@ Here you can try the features of the project.
 - Feature to sort questions on Main page by alphabet, date or answer count
 - Feature to add new question (redirects to question detail page after save)
 - Feature to add new answer (location: question detail page)
+- Feature to delete question
 - Feature to Register new user
 - Feature to Login with user and store session (who is currently logged in is always visible on frontend)
 - Feature to Logout user

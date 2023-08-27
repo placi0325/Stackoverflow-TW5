@@ -1,13 +1,8 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+
 <a name="readme-top"></a>
 
 <!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+
 -->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -60,7 +55,6 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -69,9 +63,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+This is a full stack project with JAVA Spring backend and Thymeleaf frontend. We created a web application similar to Stackoverflow.
+During development we implemented CRUD, database communication/manipulation and basic sign up/log in features.
 
 <p align="right">(<a href="#readme-top">:top:</a>)</p>
 
@@ -111,7 +104,10 @@ Please see the core dependencies and installation steps below:
 6. Install PostgreSQL
 7. Create a database in PostgreSQL named „stackoverflow”
 8. Open the project in IntelliJ from the pom.xml file :open_file_folder:
-9. Change the value of the „spring.datasource.username” and the „spring.datasource.password” variables to your PostgreSQL username and password in the src/main/resources/application.properties file.
+9. Set the database name, username and password as environment variables as follows: <br>
+      :white_check_mark: DATABASE_NAME=_your database name_<br>
+      :white_check_mark: DATABASE_USERNAME=_your username_<br>
+      :white_check_mark: DATABASE_PASSWORD=_your password_<br>
 10. Run the application by the "Run" button in the top right corner or with Shift + F10 shortcut
 11. This will start the project, and you can reach in your browser, on the following URL: http://localhost:8080/
 
@@ -136,7 +132,7 @@ Please see the core dependencies and installation steps below:
 
 <!-- CONTRIBUTING -->
 ## Contributing
-This project was made by three Codecool students: Anna Cseke, Péter Jung, Péterfi László.
+This project was made by three Codecool students: Anna Cseke, Péter Jung, László Péterfi.
 
 <!-- CONTACT -->
 ## Contact
@@ -172,8 +168,8 @@ Project Link: [https://github.com/placi0325/Stackoverflow-TW5](https://github.co
 [React-url]: https://reactjs.org/
 [JavaScript.img]:     https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
 [JavaScript-url]: https://www.javascript.com/
-[Spring.img]: https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white
-[Spring-url]: https://spring.io/
+[SpringBoot.img]: https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot
+[Spring-url]: https://spring.io/projects/spring-boot
 [Postgres.img]: https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white
 [Postgres-url]: https://www.postgresql.org/
 [ThymeLeaf.img]: https://img.shields.io/badge/Thymeleaf-%23005C0F.svg?style=for-the-badge&logo=Thymeleaf&logoColor=white

@@ -73,7 +73,7 @@ During development we implemented CRUD, database communication/manipulation and 
 ### Built With
 
 * [![ThymeLeaf][ThymeLeaf.img]][ThymeLeaf-url]
-* [![Spring][Spring.img]][Spring-url]
+* [![Spring Boot][SpringBoot.img]][SpringBoot-url]
 * [![Postgres][Postgres.img]][Postgres-url]
 
 <p align="right">(<a href="#readme-top">:top:</a>)</p>
@@ -169,7 +169,7 @@ Project Link: [https://github.com/placi0325/Stackoverflow-TW5](https://github.co
 [JavaScript.img]:     https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
 [JavaScript-url]: https://www.javascript.com/
 [SpringBoot.img]: https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot
-[Spring-url]: https://spring.io/projects/spring-boot
+[SpringBoot-url]: https://spring.io/projects/spring-boot
 [Postgres.img]: https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white
 [Postgres-url]: https://www.postgresql.org/
 [ThymeLeaf.img]: https://img.shields.io/badge/Thymeleaf-%23005C0F.svg?style=for-the-badge&logo=Thymeleaf&logoColor=white

@@ -126,9 +126,9 @@ This project was made by three Codecool students: Anna Cseke, Péter Jung, Lász
 <!-- CONTACT -->
 ## Contact
 
-:woman_technologist: Anna Cseke - :email: anna.cseke@gmail.com :black_medium_square: [![LinkedIn][linkedin-shield]][linkedin-Anna]<br>
-:man_technologist: Péter Jung - :email: jung.peter24@gmail.com :black_medium_square: [![LinkedIn][linkedin-shield]][linkedin-Peter]<br>
-:man_technologist: László Péterfi - :email: peterfi.laci.0325@gmail.com :black_medium_square: [![LinkedIn][linkedin-shield]][linkedin-Laszlo]<br>
+:woman_technologist: Anna Cseke - :email: anna.cseke[at]gmail[dot]com :black_medium_square: [![LinkedIn][linkedin-shield]][linkedin-Anna]<br>
+:man_technologist: Péter Jung - :email: jung.peter24[at]gmail[dot]com :black_medium_square: [![LinkedIn][linkedin-shield]][linkedin-Peter]<br>
+:man_technologist: László Péterfi - :email: peterfi.laci.0325[at]gmail[dot]com :black_medium_square: [![LinkedIn][linkedin-shield]][linkedin-Laszlo]<br>
 
 Project Link: [https://github.com/placi0325/Stackoverflow-TW5](https://github.com/placi0325/Stackoverflow-TW5)
 

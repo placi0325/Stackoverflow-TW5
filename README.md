@@ -3,26 +3,15 @@
 
 <!-- PROJECT SHIELDS -->
 
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/placi0325/Stackoverflow-TW5">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
 <h3 align="center">:ocean:Stackoverflow:ocean:</h3>
 
   <p align="center">
-    This is a full stack project with JAVA Spring backend and Thymeleaf frontend. The theme is a web application similar to Stackoverflow.
-    <br />
-    <a href="https://github.com/placi0325/Stackoverflow-TW5"><strong>Explore the docs :arrow_right:</strong></a>
+    This is a full stack project with Java Spring Boot backend and Thymeleaf frontend. The theme is a web application similar to Stackoverflow.
     <br />
     <br />
     <a href="https://github.com/placi0325/Stackoverflow-TW5">View Demo :computer:</a>
@@ -63,7 +52,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a full stack project with JAVA Spring backend and Thymeleaf frontend. We created a web application similar to Stackoverflow.
+This is a full stack project with Java Spring Boot backend and Thymeleaf frontend. We created a web application similar to Stackoverflow.
 During development we implemented CRUD, database communication/manipulation and basic sign up/log in features.
 
 <p align="right">(<a href="#readme-top">:top:</a>)</p>
@@ -97,19 +86,19 @@ Please see the core dependencies and installation steps below:
    ```sh
    git clone https://github.com/placi0325/Stackoverflow-TW5.git
    ```
-3. Install JAVA version 17 or higher
+2. Install Java version 17 or higher
 
-4. Install Apache Maven or IDE with built-in Maven support
-5. Install an integrated development environment(IDE) - IntelliJ IDEA
-6. Install PostgreSQL
-7. Create a database in PostgreSQL named „stackoverflow”
-8. Open the project in IntelliJ from the pom.xml file :open_file_folder:
-9. Set the database name, username and password as environment variables as follows: <br>
+3. Install Apache Maven or IDE with built-in Maven support
+4. Install an integrated development environment(IDE) - IntelliJ IDEA
+5. Install PostgreSQL
+6. Create a database in PostgreSQL
+7. Open the project in IntelliJ from the pom.xml file :open_file_folder:
+8. Set the database name, username and password as environment variables as follows: <br>
       :white_check_mark: DATABASE_NAME=_your database name_<br>
       :white_check_mark: DATABASE_USERNAME=_your username_<br>
       :white_check_mark: DATABASE_PASSWORD=_your password_<br>
-10. Run the application by the "Run" button in the top right corner or with Shift + F10 shortcut
-11. This will start the project, and you can reach in your browser, on the following URL: http://localhost:8080/
+9. Run the application by the "Run" button in the top right corner or with Shift + F10 shortcut
+10. This will start the project which you can reach in your browser, on the following URL: http://localhost:8080/
 
 
 <p align="right">(<a href="#readme-top">:top:</a>)</p>

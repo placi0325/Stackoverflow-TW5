@@ -148,7 +148,7 @@ Project Link: [https://github.com/placi0325/Stackoverflow-TW5](https://github.co
 [license-shield]: https://img.shields.io/github/license/placi0325/Stackoverflow-TW5.svg?style=for-the-badge
 [license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-Peter]: https://www.linkedin.com/in/peter-jung-66833213b/
+[linkedin-Peter]: https://www.linkedin.com/in/pjung-dev
 [linkedin-Anna]: https://www.linkedin.com/in/anna-cseke-847b1963/
 [linkedin-Laszlo]: https://www.linkedin.com/in/l%C3%A1szl%C3%B3-p%C3%A9terfi/
 [product-screenshot]: images/screenshot.png

@@ -14,7 +14,7 @@
     This is a full stack project with Java Spring Boot backend and Thymeleaf frontend. The theme is a web application similar to Stackoverflow.
     <br />
     <br />
-    <a href="https://github.com/placi0325/Stackoverflow-TW5">View Demo :computer:</a>
+    <a href="https://docs.google.com/presentation/d/1kiWpRGqF8ZEoffvcEjXWWEhbf__ZQ_4ynrRvF3KTENI/edit?usp=sharing">View Demo :computer:</a>
     ·
     <a href="https://github.com/placi0325/Stackoverflow-TW5/issues">Report Bug :lady_beetle:</a>
     ·

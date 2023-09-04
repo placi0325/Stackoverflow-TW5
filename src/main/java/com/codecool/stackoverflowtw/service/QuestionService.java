@@ -1,5 +1,6 @@
 package com.codecool.stackoverflowtw.service;
 
+import com.codecool.stackoverflowtw.dao.answer.AnswerDAO;
 import com.codecool.stackoverflowtw.dao.question.QuestionsDAO;
 import com.codecool.stackoverflowtw.controller.dto.NewQuestionDTO;
 import com.codecool.stackoverflowtw.controller.dto.QuestionDTO;
@@ -14,11 +15,14 @@ import java.util.Optional;
 public class QuestionService {
 
     private QuestionsDAO questionsDAO;
+    private AnswerDAO answerDAO;
 
     @Autowired
-    public QuestionService(QuestionsDAO questionsDAO) {
+    public QuestionService(QuestionsDAO questionsDAO, AnswerDAO answerDAO) {
         this.questionsDAO = questionsDAO;
+        this.answerDAO = answerDAO;
     }
+
 
     public List<QuestionDTO> getAllQuestions(String parameter) {
         List<Question> questions = questionsDAO.listAllQuestions(parameter);
@@ -45,12 +49,13 @@ public class QuestionService {
     }
 
     private QuestionDTO convertQuestionIntoQuestionDTO(Question question){
+        int answerCount = answerDAO.getAnswerCountByQuestionId(question.getId());
         return new QuestionDTO(
                 question.getId(),
                 question.getTitle(),
                 question.getDescription(),
                 question.getTimestamp(),
-                question.getAnswerCount(),
+                answerCount,
                 question.getUserId()
         );
     }

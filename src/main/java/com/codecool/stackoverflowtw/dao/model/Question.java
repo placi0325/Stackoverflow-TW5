@@ -3,8 +3,6 @@ package com.codecool.stackoverflowtw.dao.model;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Questions")
@@ -23,7 +21,7 @@ public class Question {
     @Column(name = "timestamp")
     private Timestamp timestamp;
 
-    /*@Column(name = "answer_count")*/
+    @Column(name = "answer_count", columnDefinition = "int default 0")
     private int answerCount;
 
     @Column(name = "user_id")

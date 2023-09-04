@@ -40,6 +40,12 @@ public class AnswerDaoJdbc implements AnswerDAO {
     }
 
     @Override
+    public int getAnswerCountByQuestionId(int questionId) {
+        String answerQuery = "SELECT COUNT(*) FROM answers WHERE question_id = " + questionId;
+        return jdbcTemplate.queryForObject(answerQuery, Integer.class);
+    }
+
+    @Override
     public Answer getById(int id) {
         String answerQuery = "SELECT * FROM answers WHERE id = " + id;
         return jdbcTemplate.query(answerQuery, answerMapper).get(0);

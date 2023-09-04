@@ -21,9 +21,6 @@ public class Question {
     @Column(name = "timestamp")
     private Timestamp timestamp;
 
-    @Column(name = "answer_count", columnDefinition = "int default 0")
-    private int answerCount;
-
     @Column(name = "user_id")
     private int userId;
 
@@ -57,14 +54,6 @@ public class Question {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public int getAnswerCount() {
-        return answerCount;
-    }
-
-    public void setAnswerCount(int answerCount) {
-        this.answerCount = answerCount;
     }
 
     public int getUserId() {

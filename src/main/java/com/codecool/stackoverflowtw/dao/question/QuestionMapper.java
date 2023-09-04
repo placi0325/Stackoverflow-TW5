@@ -5,7 +5,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 
-import javax.swing.tree.TreePath;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -17,7 +16,6 @@ public class QuestionMapper implements RowMapper<Question> {
         question.setTitle(resultSet.getString("title"));
         question.setDescription(resultSet.getString("description"));
         question.setTimestamp(resultSet.getTimestamp("timestamp"));
-        question.setAnswerCount(resultSet.getInt("answer_count"));
         question.setUserId(resultSet.getInt("user_id"));
         return question;
     }
